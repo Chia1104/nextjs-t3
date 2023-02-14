@@ -14,9 +14,11 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ARG \
-    DATABASE_URL
+    DATABASE_URL \
+    BASE_URL
 ENV \
     DATABASE_URL=${DATABASE_URL}
+    BASE_URL=${BASE_URL}
 
 RUN yarn build
 
@@ -31,7 +33,7 @@ RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/next.config.js ./next.config.js
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
@@ -42,12 +44,14 @@ ARG \
     DATABASE_URL \
     NEXTAUTH_URL \
     DISCORD_CLIENT_ID \
-    DISCORD_CLIENT_SECRET
+    DISCORD_CLIENT_SECRET \
+    BASE_URL
 ENV \
     DATABASE_URL=${DATABASE_URL} \
     NEXTAUTH_URL=${NEXTAUTH_URL} \
     DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID} \
-    DISCORD_CLIENT_SECRET=${DISCORD_CLIENT_SECRET}
+    DISCORD_CLIENT_SECRET=${DISCORD_CLIENT_SECRET} \
+    BASE_URL=${BASE_URL}
 
 USER nextjs
 
