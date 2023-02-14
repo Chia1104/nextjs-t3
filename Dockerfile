@@ -21,7 +21,8 @@ ENV \
     BASE_URL=${BASE_URL} \
     SKIP_ENV_VALIDATION=true
 
-RUN yarn build
+RUN yarn prisma generate && \
+    yarn build
 
 FROM node:18-alpine AS runner
 
