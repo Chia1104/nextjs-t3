@@ -1,8 +1,8 @@
 import Document, {
   DocumentContext,
   DocumentInitialProps,
-  Html,
   Head,
+  Html,
   Main,
   NextScript,
 } from "next/document";
@@ -11,19 +11,16 @@ class WebDoc extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx);
-
-    return initialProps;
+    return await Document.getInitialProps(ctx);
   }
 
   render() {
     return (
-      <Html lang="zh-tw">
+      <Html lang="en">
         <Head />
-        <body className="ctw-component-bg-primary scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-ctx_primary scrollbar-thumb-rounded-full">
+        <body>
           <Main />
           <NextScript />
-          <div id="__portal" />
         </body>
       </Html>
     );

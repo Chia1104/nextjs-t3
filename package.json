@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs}\"",
     "migration:init": "prisma migrate dev --name init --preview-feature"
   },
   "dependencies": {
