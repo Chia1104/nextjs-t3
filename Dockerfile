@@ -18,7 +18,7 @@ ARG \
     BASE_URL
 ENV \
     DATABASE_URL=${DATABASE_URL} \
-    BASE_URL=${BASE_URL}
+    BASE_URL=${BASE_URL} \
     SKIP_ENV_VALIDATION=true
 
 RUN yarn build
